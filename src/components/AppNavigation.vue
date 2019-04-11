@@ -1,6 +1,6 @@
 <template>
 <span>
-    <v-navigation-drawer app v-model="drawer" class="brown lighten-2" dark disable-resize-watcher>
+    <v-navigation-drawer app v-model="drawer" class="light-blue darken-4" dark disable-resize-watcher>
             <v-list>
                 <template v-for="(item, index) in items">
                     <v-list-tile :key="index">
@@ -16,12 +16,20 @@
 <v-toolbar class="toolbar" app color="light-blue darken-4" dark>
     <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
     <v-spacer class="hidden-md-and-up"></v-spacer>
-    <v-toolbar-title head class="font-weight-regular">{{appTitle}}</v-toolbar-title>
+    <v-btn flat="" head class="font-weight-bold" style="font-family: 'Courier New', Courier, monospace;font-weight:900; font-size: 20px">
+        <router-link class="nav-link" to="/"> {{appTitle}}</router-link>
+        
+    </v-btn>
     <!-- <v-btn flat class="hidden-sm-and-down">Menu</v-btn> -->
         <v-spacer class="hidden-sm-and-down"></v-spacer>
 
-    <v-btn flat head class="hidden-sm-and-down">About Me</v-btn>
-    <v-btn flat head class="hidden-sm-and-down">Portfolio</v-btn>
+    <v-btn flat head class="hidden-sm-and-down text-none" style="font-size: 18px">
+        <router-link class="nav-link" to="#about"> About Me </router-link>
+        </v-btn>
+    <v-btn flat head class="hidden-sm-and-down text-none" style="font-size: 18px">
+    <router-link class="nav-link" to="#skills"> Portfolio </router-link>
+
+        </v-btn>
 
     <!-- <v-btn color="deep-purple lighten-3" class="hidden-sm-and-down">Portfolio</v-btn> -->
 </v-toolbar>
@@ -41,9 +49,9 @@ export default {
             appTitle: 'Victor Mwenda',
             drawer: false,
             items: [
-               
-                { title: 'Who am I?' }, 
-                { title: 'My work' },
+                { title: 'Home' },
+                { title: 'About Me' }, 
+                { title: 'Portfolio' },
                
             ]
         };
@@ -56,12 +64,9 @@ export default {
 a {
     color: white;
     text-decoration: none;
+    
 }
-.head {
-  
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 
-}
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);

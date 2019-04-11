@@ -3,7 +3,7 @@
     <v-container  fluid fill-height class ="home-hero">
         <v-layout justify-center align-left column pa-5>
           
-            <div transition="scale-transition" class="display-2 font-weight-black white--text text-sm-left stuff">I'm Victor Mwenda</div>
+            <div transition="scale-transition" class="display-2 font-weight-black white--text text-sm-left stuff">Hi, I'm Victor Mwenda,</div>
             <div class="display-1 font-weight-black white--text text-sm-left mb-3">Full-Stack & DevOps Engineer</div>
             <!-- <div class="display-1 font-weight-bold white--text text-xs-center">Finally be a foodie at home with fresh, chef-prepared meals delivered daily to your door.</div> -->
             <!-- <v-btn fab class="mt-5 brown darken-4">
@@ -12,24 +12,26 @@
         </v-layout> 
         
     </v-container>
-     <v-divider insent> </v-divider>
+     <v-divider insent id="about"> </v-divider>
 
-<v-container>
-<v-layout align-center justify-center row fill-height/>
-<template >
+<v-container >
+
+<v-layout align-center justify-center row fill-height />
+<template  >
   <v-container
     id="grid"
     fluid
     grid-list-sm
-    tag="section"
+    tag="section" 
   >
     <v-layout row wrap>
-      <v-flex tag="h1" class="headline">About Me</v-flex>
+
+      <v-flex tag="h1" class="headline title">About Me</v-flex>
       <v-flex d-flex xs12 order-xs5>
         <v-layout column>
           <v-flex>
-            <v-card >
-              <v-card-text>{{ lorem }}</v-card-text>
+            <v-card hover >
+              <v-card-text class="lorem">{{ lorem }}</v-card-text>
             </v-card>
           </v-flex>
           
@@ -47,7 +49,7 @@
            <v-divider insent> </v-divider>
 
 
-   <v-timeline>
+   <v-timeline light>
     <v-timeline-item
       v-for="(year, i) in years"
       :key="i"
@@ -62,7 +64,7 @@
       </template>
       <div class="py-3">
         <h2 :class="`headline font-weight-light mb-3 ${year.color}--text`">{{year.title}}</h2>
-        <div >
+        <div class="text" >
          {{year.text}} 
         </div>
       </div>
@@ -72,15 +74,49 @@
 </template>
     </v-container>
 
+ <v-container>
+   <template>
+     <h3 class="headline"> Skills </h3>
+           <v-divider insent> </v-divider>
+  <div>
+    <div class="d-flex justify-between align-center mb-3">
+      <v-btn @click="all">all</v-btn>
+      <v-btn @click="none">none</v-btn>
+    </div>
+
+    <v-expansion-panel
+      v-model="panel"
+      expand
+    >
+      <v-expansion-panel-content
+        v-for="(item,i) in stuff"
+        :key="i"
+      >
+        <template v-slot:header>
+          <div class="card-text">{{item.lang}}</div>
+        </template>
+        <v-card>
+          <v-card-text class="card-text">{{item.text}}</v-card-text>
+          <v-progress-linear v-model="item.value"> </v-progress-linear>
+
+        </v-card>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </div>
+</template>
+
+
+  </v-container> 
 
 <v-container fluid grid-list-sm >
-<template>
-   <h3 class="headline"> Skills </h3>
+<template >
+  <div id="skills">
+   <h3  class="headline"> Portfolio </h3>
    <br>
-  <v-layout row wrap>
+  <v-layout row wrap >
     <v-flex  
-    xs12 sm4 md4 v-for="(item, idx) in items":key="idx">
-      <v-card height="100%">
+    xs12 sm4 md4 v-for="(item, idx) in items" :key="idx">
+      <v-card hover raised >
         <v-responsive>
 
         <img height="250px" width="" :src="item.src"/>
@@ -89,7 +125,7 @@
           <div  >
             <h3 class="headline mb-0">{{item.title}}</h3>
              </div>
-            <div> {{ card_text }} </div>
+            <div> {{ item.card_text }} </div>
          
         </v-card-title>
 
@@ -100,6 +136,7 @@
       </v-card>
     </v-flex>
   </v-layout>
+  </div>
 </template>
   </v-container>
 
@@ -110,7 +147,7 @@
 </template>
 
 <script>
-import { timeout } from 'q';
+// import { timeout } from 'q';
 
   
 
@@ -118,8 +155,29 @@ export default {
     name: 'HomeHero',
   
   
-    data: () => ({
-      years: [
+    data(){
+      return {
+        interval: {},
+        value: 0,
+         panel: [],
+        valueDeterminate: 50,
+        stuff: [
+          {lang: "Java",
+          text: "Everything Java: Both Back-end and JavaFx for front-end. ",
+          value:70 },
+          {lang: "MySql",
+           text: "Wealth of experience in MySql and Sqlite relational databases",
+           value:70},
+          {lang:"Docker and Kubernetes",
+           text: "Containerization, Dockerization => Virtualization : Proven containerization expertise for effective deployment and scaling",
+          value:60},
+          {lang:"Vue",
+          text: "Vue Js experience just like the code used for this page.",
+          value:50}
+          ],
+
+
+        years: [
         {
           color: 'cyan',
           year: '2018 - present',
@@ -154,30 +212,69 @@ export default {
       ],
 
      items: [
-                { src: require('../assets/javaport.png'),
-                  title:"Java" ,
-                  text: ""
-                  }, 
-                { src: require('../assets/laravel.png'),
-                  title:"Laravel, Bootstrap and Vue "
+                { src: require('../assets/demo_swarm.png'),
+                  title:"Rtb4Free",
+                  },
+                { src: require('../assets/openssp.png'),
+                  title:"OpenSsp "
                  },
-                { src: require('../assets/dockerkubernetes.png'),
-                  title:"Docker &kubernetes"
+                { src: require('../assets/javaport.png'),
+                  title:"Rental/Registration system"
+                },
+                { src: require('../assets/ussd.png'),
+                  title:"USSD"
+                },
+                { src: require('../assets/lv.png'),
+                  title:"Laravel and Vue"
                 },
                
             ],
 
-      card_text : "A highly motivated and hardworking individual, seeking an opportunity in the technology industry to build upon a keen scientific interest. Mechanically minded, with a methodical approach to working and an eagerness to learn and develop skills in a practical setting.",
-      lorem: "A highly motivated and hardworking individual, seeking an opportunity in the technology industry to build upon a keen scientific interest. Mechanically minded, with a methodical approach to working and an eagerness to learn and develop skills in a practical setting.",
-    
+      // card_text : " Mechanically minded, with a methodical approach to working and an eagerness to learn and develop skills in a practical setting.",
+      lorem: "I am highly motivated and hardworking with experience working in software development and deployment. I am very passionate about back-end and front-end technologies, and strive to better myself as a developer, and the development community as a whole." 
+
+      }
+    },
+    beforeDestroy () {
+      clearInterval(this.interval)
+    },
+    mounted () {
+      this.interval = setInterval(() => {
+        if (this.value === 100) {
+          return (this.value = 0)
+        }
+        this.value += 10
+      }, 1000)
+    },
+
+    methods: {
+      // Create an array the length of our items
+      // with all values as true
+      all () {
+        this.panel = [...Array(...this.stuff).keys()].map(_ => true)
+      },
+      // Reset the panel
+      none () {
+        this.panel = []
+      }
+    }
+
+
+}
+      
+      
  
- })
+ 
       
    
-};
+
 </script>
 
 <style scoped>
+
+
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
+
 .home-hero {
     background: url('../assets/stuff.jpg');
     background-size: cover;
@@ -190,10 +287,16 @@ export default {
 }
 
 .headline{
-  text-align: center
+  text-align: center;
+  font-family: fantasy;
 }
-.stuff{
-  text-align: left
+.title{
+font-family: fantasy;
+}
+.card-text{
+
+  font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* make keyframes that tell the start state and the end state of our object */
@@ -216,4 +319,14 @@ export default {
   animation-duration:1s;
 }
 
+.lorem{
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px
+}
+.text{
+  font-size: 15px
+}
+ .v-progress-circular{
+    margin: 1rem;
+ }
 </style>
