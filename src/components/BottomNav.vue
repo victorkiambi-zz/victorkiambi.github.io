@@ -5,9 +5,9 @@
     <v-layout
       justify-center row wrap>
       <!-- <router-link :to="{path: link}">  -->
-      <v-btn v-for="link in links" :key="link" color="white" flat round>
+      <!-- <v-btn v-for="link in links" :key="link" color="white" flat round>
         {{ link }}
-      </v-btn>
+      </v-btn> -->
       <!-- </router-link> -->
       <v-flex
        light-blue darken-4 py-3 text-xs-center white--text xs12>

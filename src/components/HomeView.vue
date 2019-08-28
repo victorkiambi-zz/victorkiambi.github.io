@@ -4,7 +4,7 @@
         <v-layout justify-center align-left column pa-5>
           
             <div transition="scale-transition" class="display-2 font-weight-black white--text text-sm-left stuff">Hi, I'm Victor Mwenda,</div>
-            <div class="display-1 font-weight-black white--text text-sm-left mb-3">Full-Stack & DevOps Engineer</div>
+            <div class="display-1 font-weight-black white--text text-sm-left mb-3">Software & DevOps Engineer</div>
             <!-- <div class="display-1 font-weight-bold white--text text-xs-center">Finally be a foodie at home with fresh, chef-prepared meals delivered daily to your door.</div> -->
             <!-- <v-btn fab class="mt-5 brown darken-4">
             <v-icon large color="white">expand_more</v-icon>
@@ -125,7 +125,11 @@
           <div  >
             <h3 class="headline mb-0">{{item.title}}</h3>
              </div>
-            <div> {{ item.card_text }} </div>
+             <br>
+            <div> 
+              {{ item.card_text }} 
+
+            </div>
          
         </v-card-title>
 
@@ -140,6 +144,10 @@
 </template>
   </v-container>
 
+<v-container>
+
+
+  </v-container>
 
 
 </span>
@@ -147,6 +155,7 @@
 </template>
 
 <script>
+import { callbackify } from 'util';
 // import { timeout } from 'q';
 
   
@@ -161,6 +170,7 @@ export default {
         value: 0,
          panel: [],
         valueDeterminate: 50,
+        dialog: false,
         stuff: [
           {lang: "Java",
           text: "Everything Java: Both Back-end and JavaFx for front-end. ",
@@ -173,6 +183,9 @@ export default {
           value:60},
           {lang:"Vue",
           text: "Vue Js experience just like the code used for this page.",
+          value:50},
+           {lang:"Laravel",
+          text: "Building Laravel applications and API's.",
           value:50}
           ],
 
@@ -181,58 +194,66 @@ export default {
         {
           color: 'cyan',
           year: '2018 - present',
-          title:"Nano Digital",
-          text: "Lead developer for real-time bidding advertising system. " +
-          "Developed the software using open source platforms. Successfully set up the back-end. " +
-          "Dockerized the applications and set up kubernetes clusters." +
-          "Lead developer for USSD platform. Succesfully built the front and back-end." 
+          title:"MobiGlobe Limited",
+          text: "Lead developer for real-time advertising system which introduced new markets for the company in advertising and increased our revenue by over 50%. " +
+          "Collaborated and assisted in working through the documentation and setting up the infrastructure using open source platforms. " +
+          "Containerized MediaPal applications using docker and setup kubernetes infrastructure for scale. " +
+          "Assisted in the design and development of MediapalDemand side platform and integrations with SSPs." 
         },
         {
           color: 'green',
           year: '2017',
-          title: "Lawsavic Investments Ltd.",
-          text: "Development of Lawsavic Investments Limited, rental management software which is currently under the prototype stage."+
-          "Ensured computers and printers are regularly updated and maintained."+
-          "Trained directors and employees on digital skills and how to work with the Safaricom M-pesa portal."
-        },
+          title: "Nano Digital Ltd.",
+          text: "Developed, designed and tested our USSD application which currently has over 2000 subscribers." +
+          "Assisted in setting up the web platform for seamless user experience and navigation for users coming from the USSD platform. "+
+          "Responsible for API integrations, most notably integrating with M-Pesa API's to enhance user experience when paying for the company's services."
+            },
         {
           color: 'pink',
           year: '2017',
           title: "Manyatta Investments Limited",
-          text: "Succesfully developed mpm kenya rental property Website. "
+          text: "Successfully developed the mpmkenya website increasing awareness on residential and commercial buildings owned by the company by 10%. "
         },
         {
           color: 'amber',
           year: '2016',
           title: "Ministry of Environment and Forestry",
-          text: "Updated, maintained and configured printers and computers. "+
-          "Installed, maintained and assisted in troubleshooting software related issues."+
-          "Trained digital literacy skills to employees"
+          text: "Assisted in troubleshooting and maintaining the organizations' software as well as disinfecting malware from compromised systems. "+ 
+                "Configured, updated and maintained hardware within the organization e.g printers." +
+                "Trained company staff on digital literacy skills, hence improving productivity with the use of new technologies."
         }
       ],
 
      items: [
-                { src: require('../assets/demo_swarm.png'),
-                  title:"Rtb4Free",
+                { src: require('../assets/mediapal1.png'),
+                  title:"Mediapal Demand Side Platform",
+                  card_text:"Laravel and Vue application for programmatic media buying. "
                   },
-                { src: require('../assets/openssp.png'),
-                  title:"OpenSsp "
-                 },
-                { src: require('../assets/javaport.png'),
-                  title:"Rental/Registration system"
-                },
+              
                 { src: require('../assets/ussd.png'),
-                  title:"USSD"
+                  title:"USSD",
+                  card_text:"Designed and Developed Juana ussd social platform"
+
                 },
-                { src: require('../assets/lv.png'),
-                  title:"Laravel and Vue"
+                { src: require('../assets/dockerkubernetes.png'),
+                  title:"Docker and Kubernetes",
+                  card_text: "Deployed mediapal apps and configurations to kubernetes. "
                 },
+                 { src: require('../assets/api.jpeg'),
+                  title:"API intergrations",
+                  card_text:"Api configurations and intergratons for Google and M-pesa"
+                },
+                 { src: require('../assets/javaport.png'),
+                  title:"Rental/Registration system",
+                  card_text: "Design and development of Java Desktop applications "
+                },
+               
+              
                
             ],
 
       // card_text : " Mechanically minded, with a methodical approach to working and an eagerness to learn and develop skills in a practical setting.",
-      lorem: "I am highly motivated and hardworking with experience working in software development and deployment. I am very passionate about back-end and front-end technologies, and strive to better myself as a developer, and the development community as a whole." 
-
+      lorem: "I am highly motivated and hardworking with experience working in software development and deployment. I am very passionate about back-end and front-end technologies, and strive to better myself as a developer, and the development community as a whole. Mechanically minded with a methodical approach to working and an eagerness to solve problems in any environment"
       }
     },
     beforeDestroy () {
