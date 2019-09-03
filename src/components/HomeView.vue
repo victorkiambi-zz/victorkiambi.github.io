@@ -193,7 +193,7 @@ export default {
         years: [
         {
           color: 'cyan',
-          year: '2018 - present',
+          year: '2019 - present',
           title:"MobiGlobe Limited",
           text: "Lead developer for real-time advertising system which introduced new markets for the company in advertising and increased our revenue by over 50%. " +
           "Collaborated and assisted in working through the documentation and setting up the infrastructure using open source platforms. " +
@@ -202,7 +202,7 @@ export default {
         },
         {
           color: 'green',
-          year: '2017',
+          year: '2018',
           title: "Nano Digital Ltd.",
           text: "Developed, designed and tested our USSD application which currently has over 2000 subscribers." +
           "Assisted in setting up the web platform for seamless user experience and navigation for users coming from the USSD platform. "+
